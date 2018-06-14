@@ -4,9 +4,10 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+import { NombresPages } from '../utils/literales';
 
 @Component({
+  selector: 'ion-app',
   templateUrl: 'app.html'
 })
 export class MyApp {
@@ -14,17 +15,18 @@ export class MyApp {
 
   rootPage: any = HomePage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{ title: string, component: any }>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  /**Literales */
+  tituloApp: String = 'Mis aplicaciones';
+
+  constructor(public platform: Platform,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen) {
+    console.log('Entra en constructor MyApp');
     this.initializeApp();
 
-    // used for an example of ngFor and navigation
-    this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage }
-    ];
-
+    this.pages = new NombresPages().arrayPaginasMenu;
   }
 
   initializeApp() {
