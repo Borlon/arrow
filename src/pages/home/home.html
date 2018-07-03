@@ -10,7 +10,7 @@
 <ion-content padding>
   <ion-list>
     <div *ngFor="let page of pages" class="margin-lines">
-      <button ion-button block outline class="botones-inicio" [ngStyle]="{'background-image': 'url('+page.image+')'}" (click)="openPage(page)"></button>
+      <button ion-button block [color]="'secondary'" class="botones-inicio" (click)="openPage(page)">{{page.title}}</button>
     </div>
   </ion-list>
 

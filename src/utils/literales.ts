@@ -5,8 +5,8 @@ import { GymAppPage } from '../pages/gym-app/gym-app';
 export class NombresPages {
     public arrayPaginasMenu: any[] = [
         { title: 'Inicio', component: HomePage, image: '' },
-        { title: 'Arquería', component: ArcheryAppPage, image: '../../assets/imgs/logo-arco-inicio.png' },
-        { title: 'Gimnasio', component: GymAppPage, image: '../../assets/imgs/logo-gym-inicio.jpg' }
+        { title: 'Arquería', component: ArcheryAppPage, image: '' },
+        { title: 'Gimnasio', component: GymAppPage, image: '' }
     ];
 }
 
