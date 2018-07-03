@@ -1,18 +1,10 @@
-<!--
-  Generated template for the GymAppPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>gymApp</ion-title>
-  </ion-navbar>
-
+<ion-header no-shadow no-border>
+  <header-gym></header-gym>
 </ion-header>
-
-
-<ion-content padding>
-
-</ion-content>
+<ion-content class="home-image"></ion-content>
+<super-tabs id="mainTabs" [config]="{ sideMenu: 'left' }" scrollTabs toolbarColor="light" toolbarBackground="darkred" indicatorColor="yellow"
+  badgeColor="yellow" (tabSelect)="onTabSelect($event)" tabsPlacement="bottom">
+  <super-tab [root]="tab1Root" title="EJERCICIOS" icon="fitness" id="ejerciciosTab"></super-tab>
+  <super-tab [root]="tab2Root" title="ENTRENAMIENTOS" icon="leaf" id="entrenamientosTab"></super-tab>
+  <super-tab [root]="tab3Root" title="EVOLUCIÓN" icon="heart-empty" id="evoTab"></super-tab>
+</super-tabs>

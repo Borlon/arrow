@@ -1,3 +1,17 @@
 page-gym-app {
-
+  .home-image {
+    background-image: url('../../assets/imgs/spa-logo.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .sin-fondo {
+    background-color: transparent;
+  }
+  .con-header {
+    margin-top: 60px;
+  }
+  .con-footer {
+    margin-bottom: 60px;
+  }
 }

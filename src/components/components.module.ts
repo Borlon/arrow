@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
-import { MenuComponent } from './menu/menu';
+import { HeaderGymComponent } from './header-gym/header-gym';
+import { SuperTabsModule } from 'ionic2-super-tabs';
 
 @NgModule({
-	declarations: [
-		MenuComponent
-	],
-	imports: [],
-	exports: [MenuComponent]
+    declarations: [
+        HeaderGymComponent
+    ],
+    imports: [SuperTabsModule],
+    exports: [HeaderGymComponent]
 })
 export class ComponentsModule { }
