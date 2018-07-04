@@ -27,3 +27,23 @@ export class Plataformas {
     public TABLET: String = 'tablet';
     public WINDOWS: String = 'windows';
 }
+
+export class LiteralesEjercicioModalPage {
+    public TITULO_CABECERA_LABEL: String = 'Nuevo ejercicio';
+    public TITULO_LABEL: String = 'Título';
+    public DESCRIPCION_LABEL: String = 'Descripción';
+    public MUSCULOS_LABEL: String = 'Seleccione tipo de ejercicio';
+    public MUSCULOS_SELECCIONE: String = 'Seleccione';
+    public MUSCULOS_ARRAY_SELECT: String[] = [
+        'Pectorales',
+        'Dorsales',
+        'Lumbares',
+        'Piernas',
+        'Biceps',
+        'Triceps',
+        'Hombros',
+        'Abdominales'
+    ];
+    public IMAGENES_LABEL: String = 'Imagen';
+    public BUTTON_LABEL: String = 'Añadir ejercicio';
+}

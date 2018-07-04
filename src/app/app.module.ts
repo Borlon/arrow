@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
 
@@ -43,6 +44,7 @@ import { EjercicioModalPage } from '../pages/gym-app/ejercicios/ejercicio-modal/
     StatusBar,
     SplashScreen,
     NativePageTransitions,
+    Camera,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })

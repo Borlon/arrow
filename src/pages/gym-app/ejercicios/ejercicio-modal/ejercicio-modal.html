@@ -8,13 +8,48 @@
   <ion-navbar [color]="'darkred'">
     <button ion-button icon-only clear (click)="dismiss()">
       <ion-icon class="flecha-icon" name="arrow-round-back"></ion-icon>
-      <ion-title>{{tituloCabecera}}</ion-title>
+      <ion-title>{{literalesEjercicioModalPage.TITULO_CABECERA_LABEL}}</ion-title>
     </button>
-    
   </ion-navbar>
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  <ion-list padding>
+    <ion-item>
+      <ion-label stacked>{{literalesEjercicioModalPage.TITULO_LABEL}}</ion-label>
+      <ion-input type="text" [(ngModel)]="data.titulo"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>{{literalesEjercicioModalPage.DESCRIPCION_LABEL}}</ion-label>
+      <ion-textarea type="text" [(ngModel)]="data.descripcion"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>{{literalesEjercicioModalPage.MUSCULOS_LABEL}}</ion-label>
+      <ion-select [(ngModel)]="data.musculo" placeholder="{{literalesEjercicioModalPage.MUSCULOS_SELECCIONE}}">
+        <ion-option *ngFor="let item of selectArray" [value]="item">{{item}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-fab right style="margin-top: 20px">
+      <button ion-fab [color]="'dark'">
+        <ion-icon name="arrow-dropleft"></ion-icon>
+      </button>
+      <ion-fab-list side="left">
+        <button ion-fab (click)="sacarFoto()">
+          <ion-icon name="camera"></ion-icon>
+        </button>
+        <button ion-fab>
+          <ion-icon name="image"></ion-icon>
+        </button>
+      </ion-fab-list>
+    </ion-fab>
+    <ion-card *ngIf="base64Image" style="margin-top: 80px">
+      <ion-card-content>
+        <img [src]="base64Image" alt="No se ve" *ngIf="base64Image" />
+      </ion-card-content>
+    </ion-card>
 
+
+    <button ion-button round style="margin-top: 50px;">{{literalesEjercicioModalPage.BUTTON_LABEL}}</button>
+  </ion-list>
 </ion-content>
