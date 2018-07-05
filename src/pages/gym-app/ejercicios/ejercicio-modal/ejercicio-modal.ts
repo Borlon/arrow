@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { LiteralesEjercicioModalPage } from '../../../../utils/literales';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { GymServiceProvider } from '../../../../providers/gym-service/gym-service';
 
 /**
  * Generated class for the EjercicioModalPage page.
@@ -31,7 +32,8 @@ export class EjercicioModalPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     public viewCtrl: ViewController,
-    private camera: Camera) {
+    private camera: Camera,
+    private gymServiceProvider: GymServiceProvider) {
     console.log('Entra en contructor EjercicioModalPage');
     this.inicializar();
   }
@@ -46,7 +48,7 @@ export class EjercicioModalPage {
       titulo: '',
       descripcion: '',
       musculo: '',
-      imagenes: ''
+      imagen: ''
     };
     this.selectArray = new Array<string>();
     console.log(this.literalesEjercicioModalPage.MUSCULOS_ARRAY_SELECT);
@@ -56,7 +58,7 @@ export class EjercicioModalPage {
     console.log(this.selectArray);
     this.options = {
       quality: 100,
-      destinationType: this.camera.DestinationType.DATA_URL,
+      destinationType: this.camera.DestinationType.FILE_URI,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
       saveToPhotoAlbum: true
@@ -72,7 +74,8 @@ export class EjercicioModalPage {
     this.camera.getPicture(this.options).then((imageData) => {
       // imageData is either a base64 encoded string or a file URI
       // If it's base64 (DATA_URL):
-      this.base64Image = 'data:image/jpeg;base64,' + imageData;
+      this.base64Image = imageData;
+      this.data.imagen = this.base64Image;
       console.log(this.base64Image);
     }, (err) => {
       // Handle error
@@ -80,4 +83,10 @@ export class EjercicioModalPage {
     });
   }
 
+  crearEjercicio() {
+    console.log('Entra en crearEjercicio');
+    this.ejercicioBean = new EjercicioBean(this.data);
+    this.gymServiceProvider.create(this.ejercicioBean);
+    this.navCtrl.pop();
+  }
 }

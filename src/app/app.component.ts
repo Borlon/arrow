@@ -7,6 +7,8 @@ import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/na
 
 import { HomePage } from '../pages/home/home';
 import { NombresPages, Plataformas, VariablesSesion } from '../utils/literales';
+import { SQLite } from '@ionic-native/sqlite';
+import { GymServiceProvider } from '../providers/gym-service/gym-service';
 
 @Component({
   selector: 'ion-app',
@@ -29,7 +31,9 @@ export class MyApp {
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
     private nativePageTransitions: NativePageTransitions,
-    private storage: Storage) {
+    private storage: Storage,
+    private sqlite: SQLite,
+    private gymServiceProvider: GymServiceProvider) {
     console.log('Entra en constructor MyApp');
     this.initializeApp();
     this.pages = new NombresPages().arrayPaginasMenu;
@@ -79,6 +83,7 @@ export class MyApp {
         console.log('ionic serve');
         this.storage.set(this.variablesSesion.PLATAFORMA, this.plataformas.ANDROID);
       }
+      this.createDatabase();
     });
   }
 
@@ -87,5 +92,21 @@ export class MyApp {
     this.inicializarOptions(page);
     this.nativePageTransitions.flip(this.options);
     this.nav.setRoot(page.component);
+  }
+
+  private createDatabase() {
+    this.sqlite.create({
+      name: 'gymDataBase.db',
+      location: 'default' // the location field is required
+    })
+      .then((db) => {
+        console.log(db);
+        /* this.storage.set(this.variablesSesion.IS_GYM_BD, true); */
+        this.gymServiceProvider.setDatabase(db);
+        return this.gymServiceProvider.createTable();
+      })
+      .catch(error => {
+        console.error(error);
+      });
   }
 }

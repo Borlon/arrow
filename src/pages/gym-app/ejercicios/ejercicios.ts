@@ -1,6 +1,8 @@
+import { EjercicioBean } from './../../../beans/ejercicio';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { EjercicioModalPage } from './ejercicio-modal/ejercicio-modal';
+import { GymServiceProvider } from '../../../providers/gym-service/gym-service';
 
 /**
  * Generated class for the EjerciciosPage page.
@@ -17,12 +19,14 @@ import { EjercicioModalPage } from './ejercicio-modal/ejercicio-modal';
 export class EjerciciosPage {
 
   ejercicioPageModal: any;
+  listaEjercicios: EjercicioBean[];
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
-    public modalCtrl: ModalController) {
-      console.log('Entra en constructor EjerciciosPage');
-      this.ejercicioPageModal = this.modalCtrl.create(EjercicioModalPage);
+    public modalCtrl: ModalController,
+    private gymServiceProvider: GymServiceProvider) {
+    console.log('Entra en constructor EjerciciosPage');
+    this.ejercicioPageModal = this.modalCtrl.create(EjercicioModalPage);
   }
 
   ionViewDidLoad() {
@@ -31,13 +35,19 @@ export class EjerciciosPage {
 
   crearEjercicio() {
     console.log('Llama a crearEjercicio()');
-      this.ejercicioPageModal.present();
+    this.ejercicioPageModal.present();
 
   }
 
-  /* openModalWithParams() {
-    let myModal = this.modalCtrl.create(ModalPage, { 'myParam': this.myParam });
-    myModal.present();
-  } */
-
+  getAll() {
+    this.listaEjercicios = new Array<EjercicioBean>();
+    this.gymServiceProvider.getAll()
+      .then(ejercicios => {
+        this.listaEjercicios = ejercicios;
+        console.log(this.listaEjercicios);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
 }

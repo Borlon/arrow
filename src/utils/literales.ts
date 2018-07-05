@@ -12,6 +12,7 @@ export class NombresPages {
 
 export class VariablesSesion {
     public PLATAFORMA: String = 'plataforma';
+    public IS_GYM_BD: String = 'iSGymDB';
 }
 
 export class Plataformas {

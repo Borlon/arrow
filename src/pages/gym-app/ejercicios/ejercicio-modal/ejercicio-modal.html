@@ -43,13 +43,9 @@
         </button>
       </ion-fab-list>
     </ion-fab>
-    <ion-card *ngIf="base64Image" style="margin-top: 80px">
-      <ion-card-content>
-        <img [src]="base64Image" alt="No se ve" *ngIf="base64Image" />
-      </ion-card-content>
-    </ion-card>
+    <img [src]="base64Image" alt="No se ve" *ngIf="base64Image" />
 
 
-    <button ion-button round style="margin-top: 50px;">{{literalesEjercicioModalPage.BUTTON_LABEL}}</button>
+    <button ion-button round style="margin-top: 50px;" (click)="crearEjercicio()">{{literalesEjercicioModalPage.BUTTON_LABEL}}</button>
   </ion-list>
 </ion-content>
